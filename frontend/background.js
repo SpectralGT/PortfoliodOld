@@ -1,5 +1,8 @@
 import * as THREE from "three";
 import ObjectData from "./3dObjectData.json";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+
+const loader = new GLTFLoader();
 
 const scene = new THREE.Scene();
 
@@ -25,11 +28,20 @@ let objects = [];
 
 for (let i = 0; i < 10; i++) {
   const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshPhongMaterial({ color: 0x242e49 });
-
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
-  objects.push(cube);
+  const material = new THREE.MeshNormalMaterial();
+  let cube = new THREE.Mesh(geometry, material);
+  loader.load(
+    "./capsule.gltf",
+    function (gltf) {
+      cube = gltf.scene.children[0];
+      scene.add(cube);
+      objects.push(cube);
+    },
+    undefined,
+    function (error) {
+      console.error(error);
+    }
+  );
 }
 
 document.onmousemove = (e) => {
@@ -44,7 +56,7 @@ document.onmousemove = (e) => {
   });
 };
 
-camera.position.z = 10;
+camera.position.z = 20;
 
 const rotationX = Math.random() / 0.5 - 1;
 const rotationY = Math.random() / 0.5 - 1;
@@ -53,8 +65,8 @@ function animate() {
   requestAnimationFrame(animate);
 
   objects.map((c, i) => {
-    c.rotation.x += (ObjectData[i].offset.x+1) * 0.001 ;
-    c.rotation.y += (ObjectData[i].offset.y+1) * 0.001;
+    c.rotation.x += (ObjectData[i].offset.x + 1) * 0.001;
+    c.rotation.y += (ObjectData[i].offset.y + 1) * 0.001;
   });
 
   renderer.render(scene, camera);

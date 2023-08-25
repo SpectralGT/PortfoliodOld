@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import ObjectData from "./3dObjectData.json";
 
 const scene = new THREE.Scene();
 
@@ -20,20 +21,30 @@ const renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.append(renderer.domElement);
 
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshPhongMaterial({ color: 0x242e49 });
+let objects = [];
 
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+for (let i = 0; i < 10; i++) {
+  const geometry = new THREE.BoxGeometry(1, 1, 1);
+  const material = new THREE.MeshPhongMaterial({ color: 0x242e49 });
 
-camera.position.z = 5;
+  const cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
+  objects.push(cube);
+}
 
-document.onmousemove = (e) =>
-  cube.position.set(
-    (e.clientX / window.innerWidth) * 2 - 1,
-    -(e.clientY / window.innerWidth) * 2 + 1,
-    0
-  );
+document.onmousemove = (e) => {
+  let i = 0;
+  objects.map((c) => {
+    c.position.set(
+      (e.clientX / window.innerWidth) * 2 - 1 + ObjectData[i].offset.x,
+      -((e.clientY / window.innerWidth) * 2 + 1) + ObjectData[i].offset.y,
+      0
+    );
+    i++;
+  });
+};
+
+camera.position.z = 10;
 
 const rotationX = Math.random() / 0.5 - 1;
 const rotationY = Math.random() / 0.5 - 1;
@@ -41,8 +52,10 @@ const rotationY = Math.random() / 0.5 - 1;
 function animate() {
   requestAnimationFrame(animate);
 
-  cube.rotation.x += rotationX * 0.01;
-  cube.rotation.y += rotationY * 0.01;
+  objects.map((c, i) => {
+    c.rotation.x += (ObjectData[i].offset.x+1) * 0.001 ;
+    c.rotation.y += (ObjectData[i].offset.y+1) * 0.001;
+  });
 
   renderer.render(scene, camera);
 }

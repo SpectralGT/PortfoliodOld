@@ -2,8 +2,6 @@ import * as THREE from "three";
 import ObjectData from "./3dObjectData.json";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-const loader = new GLTFLoader();
-
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
@@ -12,6 +10,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
+camera.position.z = 20;
 
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(ambientLight);
@@ -25,6 +24,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.append(renderer.domElement);
 
 let objects = [];
+const loader = new GLTFLoader();
 
 for (let i = 0; i < 10; i++) {
   const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -55,11 +55,6 @@ document.onmousemove = (e) => {
     i++;
   });
 };
-
-camera.position.z = 20;
-
-const rotationX = Math.random() / 0.5 - 1;
-const rotationY = Math.random() / 0.5 - 1;
 
 function animate() {
   requestAnimationFrame(animate);

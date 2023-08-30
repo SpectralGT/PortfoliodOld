@@ -12,11 +12,11 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.z = 10;
 
-const ambientLight = new THREE.AmbientLight(0xffffff);
+const ambientLight = new THREE.AmbientLight(0xffffff, 10);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(0, 0, 5);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 10);
+directionalLight.position.set(0, 10, 10);
 scene.add(directionalLight);
 
 const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -30,7 +30,13 @@ for (let i = 0; i < 3; i++) {
   loader.load(
     "./capsule.gltf",
     function (gltf) {
-      let cube = gltf.scene.children[0];
+      let cube = gltf.scene.children[0].geometry;
+      let mat = new THREE.MeshPhongMaterial({
+        color: 0x11ff00,
+        specular: 0xfbff00,
+        shininess: 1,
+      });
+      cube = new THREE.Mesh(cube, mat);
       scene.add(cube);
       objects.push(cube);
     },
@@ -45,7 +51,13 @@ for (let i = 0; i < 2; i++) {
   loader.load(
     "./curl.gltf",
     function (gltf) {
-      let cube = gltf.scene.children[0];
+      let cube = gltf.scene.children[0].geometry;
+      let mat = new THREE.MeshPhongMaterial({
+        color: 0xff0000,
+        specular: 0x0000ff,
+        shininess: 1,
+      });
+      cube = new THREE.Mesh(cube, mat);
       scene.add(cube);
       objects.push(cube);
     },
@@ -72,9 +84,8 @@ function animate() {
   requestAnimationFrame(animate);
 
   objects.map((o, i) => {
-    o.rotation.y = ObjectData[i].rotation.y * (Math.PI / 180);
-    o.rotation.z = ObjectData[i].rotation.z * (Math.PI / 180);
-    console.log(o.rotation);
+    o.rotation.y = ObjectData[i].rotation.y * (Math.PI / 180) ;
+    o.rotation.z = ObjectData[i].rotation.z * (Math.PI / 180) ;
   });
 
   renderer.render(scene, camera);

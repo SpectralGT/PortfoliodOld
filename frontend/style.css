@@ -15,3 +15,9 @@
 body{
   background-color: #f3f3f3;
 }
+
+.lil-gui{
+width: max-content;
+height: max-content;
+font-size: 1em;
+}

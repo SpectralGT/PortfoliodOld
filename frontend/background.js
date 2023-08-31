@@ -32,8 +32,8 @@ for (let i = 0; i < 3; i++) {
     function (gltf) {
       let cube = gltf.scene.children[0].geometry;
       let mat = new THREE.MeshPhongMaterial({
-        color: 0x11ff00,
-        specular: 0xfbff00,
+        color: 0x0000ff,
+        specular: 0xff0000,
         shininess: 1,
       });
       cube = new THREE.Mesh(cube, mat);
@@ -53,8 +53,8 @@ for (let i = 0; i < 2; i++) {
     function (gltf) {
       let cube = gltf.scene.children[0].geometry;
       let mat = new THREE.MeshPhongMaterial({
-        color: 0xff0000,
-        specular: 0x0000ff,
+        color: 0x00ff33,
+        specular: 0xfff700,
         shininess: 1,
       });
       cube = new THREE.Mesh(cube, mat);
@@ -71,10 +71,10 @@ for (let i = 0; i < 2; i++) {
 document.onmousemove = (e) => {
   let i = 0;
   objects.map((c) => {
-    c.position.set(
-      (e.clientX / window.innerWidth) * 2 - 1 + ObjectData[i].offset.x,
-      -((e.clientY / window.innerWidth) * 2 + 1) + ObjectData[i].offset.y,
-      0
+    c.rotation.set(
+      0,
+      (e.clientX / window.innerWidth) * 2 - 1 + ObjectData[i].rotation.y,
+      (e.clientY / window.innerWidth) * 2 + 1 + ObjectData[i].rotation.z
     );
     i++;
   });
@@ -82,11 +82,20 @@ document.onmousemove = (e) => {
 
 function animate() {
   requestAnimationFrame(animate);
-
   objects.map((o, i) => {
-    o.rotation.y = ObjectData[i].rotation.y * (Math.PI / 180) ;
-    o.rotation.z = ObjectData[i].rotation.z * (Math.PI / 180) ;
+    o.position.set(ObjectData[i].hover.x, ObjectData[i].hover.y, 0);
+    let hover = ObjectData[i].hover;
+    o.rotation.set(
+      0,
+      hover.rotY * (Math.PI / 180),
+      hover.rotZ * (Math.PI / 180)
+    );
   });
+
+  // objects.map((o, i) => {
+  //   o.rotation.y = ObjectData[i].rotation.y * (Math.PI / 180) ;
+  //   o.rotation.z = ObjectData[i].rotation.z * (Math.PI / 180) ;
+  // });
 
   renderer.render(scene, camera);
 }

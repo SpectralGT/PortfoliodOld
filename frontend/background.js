@@ -10,7 +10,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.z = 10;
+camera.position.z = 20;
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 10);
 scene.add(ambientLight);
@@ -21,7 +21,7 @@ scene.add(directionalLight);
 
 const renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.append(renderer.domElement);
+document.getElementById("app").append(renderer.domElement);
 
 let objects = [];
 const loader = new GLTFLoader();
@@ -83,13 +83,16 @@ document.onmousemove = (e) => {
 function animate() {
   requestAnimationFrame(animate);
   objects.map((o, i) => {
-    o.position.set(ObjectData[i].hover.x, ObjectData[i].hover.y, 0);
+    let xPos = ObjectData[i].offset.x;
+    let yPos =  ObjectData[i].offset.y;
+
+    o.position.set(xPos, yPos, 0);
     let hover = ObjectData[i].hover;
-    o.rotation.set(
-      0,
-      hover.rotY * (Math.PI / 180),
-      hover.rotZ * (Math.PI / 180)
-    );
+    // o.rotation.set(
+    //   0,
+    //   hover.rotY * (Math.PI / 180),
+    //   hover.rotZ * (Math.PI / 180)
+    // );
   });
 
   // objects.map((o, i) => {

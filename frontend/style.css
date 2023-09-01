@@ -4,6 +4,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --background-color:#ecf0ff;
+  --font-color:#282639;
 }
 
 *{
@@ -13,11 +16,62 @@
 }
 
 body{
-  background-color: #f3f3f3;
+  background-color:var(--background-color);
 }
 
-.lil-gui{
-width: max-content;
-height: max-content;
-font-size: 1em;
+.app{
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+canvas{
+  width: 100vw;
+  height: 100vh;
+}
+
+.heroCard{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  text-align: center;
+}
+
+.title{
+  width: max-content;
+  font-size: 10vw;
+  font-family: 'Staatliches', cursive;
+  color: transparent;
+  -webkit-text-stroke:2px var(--font-color);
+}
+.title .name{
+  color: var(--font-color);
+  -webkit-text-stroke:0px;
+
+}
+
+.description{
+  font-size: 5vw;
+  font-family: 'Teko', sans-serif;
+  line-height: 1em;
+  color: var(--font-color);
+}
+
+.buttons{
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.buttons a{
+  text-decoration: none;
+  margin: 0px 4vw;
+  color: var(--font-color);
+  font-family: 'Staatliches', cursive;
+  font-size: 3vw;
+  border: solid 4px var(--font-color);
+  padding: 0.5em 1em;
 }

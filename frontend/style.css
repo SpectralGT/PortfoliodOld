@@ -72,6 +72,6 @@ canvas{
   color: var(--font-color);
   font-family: 'Staatliches', cursive;
   font-size: 3vw;
-  border: solid 4px var(--font-color);
+  border: solid 2px var(--font-color);
   padding: 0.5em 1em;
 }

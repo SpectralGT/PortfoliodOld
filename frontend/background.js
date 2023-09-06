@@ -2,11 +2,6 @@ import * as THREE from "three";
 import ObjectData from "./3dObjectData.json";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-window.addEventListener("resize", function () {
-  "use strict";
-  window.location.reload();
-});
-
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
@@ -16,7 +11,7 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 camera.position.z = 10000 / window.innerWidth;
-console.log(camera.position.z);
+if (window.innerHeight > window.innerWidth) camera.rotation.z = 90;
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 10);
 scene.add(ambientLight);
@@ -25,7 +20,7 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 10);
 directionalLight.position.set(0, 10, 10);
 scene.add(directionalLight);
 
-const renderer = new THREE.WebGLRenderer({ alpha: true ,antialias:true});
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("app").append(renderer.domElement);
 

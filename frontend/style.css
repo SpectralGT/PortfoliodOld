@@ -37,6 +37,7 @@ canvas{
   transform: translate(-50%, -50%);
   background-color: transparent;
   text-align: center;
+  height: max-content;
 }
 
 .title{
@@ -66,12 +67,25 @@ canvas{
   justify-content: center;
 }
 
-.buttons a{
-  text-decoration: none;
+.buttons > *{
   margin: 0px 4vw;
-  color: var(--font-color);
   font-family: 'Staatliches', cursive;
   font-size: 3vw;
   border: solid 2px var(--font-color);
-  padding: 0.5em 1em;
+  }
+
+.buttons a {
+  float: left;
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+.buttons > * .background {
+  width: 100%;
+  height: 100%;
+  background-color: #282639;
+}
+.buttons > * .background > * {
+  position: relative;
+  width: 20%;
 }

@@ -10,6 +10,16 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
+
+window.addEventListener("resize", onWindowResize, false);
+
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
 camera.position.z = 10000 / window.innerWidth;
 if (window.innerHeight > window.innerWidth) camera.rotation.z = 90;
 

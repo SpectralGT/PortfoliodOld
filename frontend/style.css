@@ -5,32 +5,32 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --background-color:#ecf0ff;
-  --font-color:#282639;
+  --background-color: #ecf0ff;
+  --font-color: #282639;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
-  background-color:var(--background-color);
+body {
+  background-color: var(--background-color);
 }
 
-.app{
+.app {
   display: block;
   width: 100vw;
   height: 100vh;
 }
 
-canvas{
+canvas {
   width: 100vw;
   height: 100vh;
 }
 
-.heroCard{
+.heroCard {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -40,52 +40,63 @@ canvas{
   height: max-content;
 }
 
-.title{
+.title {
   width: max-content;
   font-size: 10vw;
-  font-family: 'Staatliches', cursive;
+  font-family: "Staatliches", cursive;
   color: transparent;
-  -webkit-text-stroke:2px var(--font-color);
+  -webkit-text-stroke: 2px var(--font-color);
 }
-.title .name{
+.title .name {
   color: var(--font-color);
-  -webkit-text-stroke:0px;
-
+  -webkit-text-stroke: 0px;
 }
 
-.description{
+.description {
   font-size: 5vw;
-  font-family: 'Teko', sans-serif;
+  font-family: "Teko", sans-serif;
   line-height: 1em;
   color: var(--font-color);
 }
 
-.buttons{
+.link-buttons {
   margin-top: 2em;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.buttons > *{
+.button {
+  position: relative;
   margin: 0px 4vw;
-  font-family: 'Staatliches', cursive;
+  font-family: "Staatliches", cursive;
   font-size: 3vw;
   border: solid 2px var(--font-color);
-  }
+  width: 20vw;
+  height: 5vw;
+}
 
-.buttons a {
-  float: left;
+.button a {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: block;
+  z-index: 2;
   text-decoration: none;
+  font-size: 4vw;
   color: var(--font-color);
 }
 
-.buttons > * .background {
+.button .background {
+  position: relative;
   width: 100%;
   height: 100%;
-  background-color: #282639;
 }
-.buttons > * .background > * {
+.button .background div {
+  float: left;
+  display: inline;
   position: relative;
   width: 20%;
+  height: 100%;
+  background-color: var(--font-color);
 }

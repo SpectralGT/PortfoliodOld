@@ -85,6 +85,7 @@ canvas {
   text-decoration: none;
   font-size: 4vw;
   color: var(--font-color);
+  transition: color 1s 1s;
 }
 
 .button .background {
@@ -97,6 +98,31 @@ canvas {
   display: inline;
   position: relative;
   width: 20%;
-  height: 100%;
+  height: 0%;
+}
+
+.background div:nth-child(1) {
+  transition: height 1s 100ms;
+}
+
+.background div:nth-child(2) {
+  transition: height 1s 200ms;
+}
+.background div:nth-child(3) {
+  transition: height 1s 300ms;
+}
+.background div:nth-child(4) {
+  transition: height 1s 400ms;
+}
+.background div:nth-child(5) {
+  transition: height 1s 500ms;
+}
+
+.button:hover a {
+  color: var(--background-color);
+}
+
+.button:hover .bg-div {
   background-color: var(--font-color);
+  height: 100%;
 }

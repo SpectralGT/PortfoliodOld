@@ -30,6 +30,13 @@ canvas {
   height: 100vh;
 }
 
+.overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 .heroCard {
   position: absolute;
   top: 50%;
@@ -85,7 +92,7 @@ canvas {
   text-decoration: none;
   font-size: 4vw;
   color: var(--font-color);
-  transition: color 1s 1s;
+  transition: color 1s ease-out;
 }
 
 .button .background {
@@ -93,12 +100,13 @@ canvas {
   width: 100%;
   height: 100%;
 }
-.button .background div {
+.button .background .bg-div {
   float: left;
   display: inline;
   position: relative;
   width: 20%;
   height: 0%;
+  background-color: var(--font-color);
 }
 
 .background div:nth-child(1) {

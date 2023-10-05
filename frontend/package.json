@@ -9,9 +9,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "gh-pages": "^6.0.0",
+    "push-dir": "^0.4.1",
     "vite": "^4.4.5"
   },
   "dependencies": {
+    "http-server": "^14.1.1",
     "lil-gui": "^0.18.2",
     "three": "^0.155.0"
   }

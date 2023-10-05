@@ -39,7 +39,7 @@ const loader = new GLTFLoader();
 
 for (let i = 0; i < 3; i++) {
   loader.load(
-    "./capsule.gltf",
+    "/assets/capsule.gltf",
     function (gltf) {
       let cube = gltf.scene.children[0].geometry;
       let mat = new THREE.MeshPhongMaterial({
@@ -60,7 +60,7 @@ for (let i = 0; i < 3; i++) {
 
 for (let i = 0; i < 2; i++) {
   loader.load(
-    "./curl.gltf",
+    "/assets/curl.gltf",
     function (gltf) {
       let cube = gltf.scene.children[0].geometry;
       let mat = new THREE.MeshPhongMaterial({

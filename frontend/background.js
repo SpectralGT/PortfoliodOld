@@ -21,7 +21,10 @@ function onWindowResize() {
 }
 
 camera.position.z = 11000 / window.innerWidth;
-if (window.innerHeight > window.innerWidth) camera.rotation.z = 90;
+if (window.innerHeight > window.innerWidth) {
+  camera.rotation.z = 90 * (Math.PI / 180);
+  camera.position.z = 10000 / window.innerWidth;
+}
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 10);
 scene.add(ambientLight);

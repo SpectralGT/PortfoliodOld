@@ -107,7 +107,8 @@ body {
   grid-column-end: 3;
 }
 
-
-@media  {
-  
+@media only screen and (max-width: 768px) {
+ .button a{
+  font-size: 8vw;
+ } 
 }

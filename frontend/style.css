@@ -6,7 +6,7 @@
   -webkit-text-size-adjust: 100%;
 
   --background-color: #ecf0ff;
-  --font-color: #3f446d;
+  --font-color: #323657;
 }
 
 * {
@@ -132,4 +132,24 @@ canvas {
 .button:hover .bg-div {
   background-color: var(--font-color);
   height: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .title {
+    font-size: 13vw;
+  }
+  .description {
+    font-size: 9vw;
+  }
+  .overlay {
+    background-color: rgba(255, 255, 255, 0.308);
+  }
+
+  .button{
+     width: 30vw;
+     height: 7vw;
+  }
+  .button a {
+    font-size: 5vw;
+  }
 }

@@ -32,8 +32,8 @@ canvas {
 
 .overlay {
   position: absolute;
-  width: 90vw;
-  height: 90vh;
+  width: 98vw;
+  height: 95vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

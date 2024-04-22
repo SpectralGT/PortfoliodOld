@@ -4,12 +4,7 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(
-  50,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 window.addEventListener("resize", onWindowResize, false);
 
@@ -45,10 +40,8 @@ for (let i = 0; i < 3; i++) {
     "/assets/capsule.gltf",
     function (gltf) {
       let cube = gltf.scene.children[0].geometry;
-      let mat = new THREE.MeshPhongMaterial({
-        color: 0x0000ff,
-        specular: 0xff0000,
-        shininess: 1,
+      let mat = new THREE.MeshBasicMaterial({
+        color: 0x2ec4b6,
       });
       cube = new THREE.Mesh(cube, mat);
       scene.add(cube);
@@ -66,11 +59,11 @@ for (let i = 0; i < 2; i++) {
     "/assets/curl.gltf",
     function (gltf) {
       let cube = gltf.scene.children[0].geometry;
-      let mat = new THREE.MeshPhongMaterial({
-        color: 0x00ff33,
-        specular: 0xfff700,
-        shininess: 1,
+
+      let mat = new THREE.MeshBasicMaterial({
+        color: 0x2ec4b6,
       });
+
       cube = new THREE.Mesh(cube, mat);
       scene.add(cube);
       objects.push(cube);
@@ -101,7 +94,7 @@ function animate() {
     let yPos = ObjectData[i].offset.y;
 
     o.position.set(xPos, yPos, 0);
-    let hover = ObjectData[i].hover;
+    // let hover = ObjectData[i].hover;
     // o.rotation.set(
     //   0,
     //   hover.rotY * (Math.PI / 180),

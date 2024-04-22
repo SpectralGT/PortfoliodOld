@@ -5,8 +5,8 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --background-color: #ecf0ff;
-  --font-color: #3f446d;
+  --background-color: #fdfffc;
+  --font-color: #2ec4b6;
 }
 
 * {
@@ -51,7 +51,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
 }
 
 .button .background {
@@ -108,7 +108,7 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
- .button a{
-  font-size: 8vw;
- } 
+  .button a {
+    font-size: 8vw;
+  }
 }

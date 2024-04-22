@@ -5,14 +5,15 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --background-color: #ecf0ff;
-  --font-color: #323657;
+  --background-color: #fdfffc;
+  --font-color: #00201d;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  perspective: unset;
 }
 
 body {
@@ -50,7 +51,7 @@ canvas {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%) translateY(-50%);
   background-color: transparent;
   text-align: center;
   height: max-content;
